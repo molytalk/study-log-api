@@ -1,0 +1,12 @@
+[project]
+name = "study-log-api"
+version = "0.1.0"
+description = "个人学习日志 API - AI学习实战项目"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+]
+
+[tool.uv]
+package = false

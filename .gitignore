@@ -1,0 +1,22 @@
+# Python 虚拟环境（每人自己装，不入库）
+.venv/
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 构建产物（可编辑安装自动生成）
+*.egg-info/
+
+# 数据库文件（本地数据，不入库）
+*.db
+
+# pytest 缓存
+.pytest_cache/
+
+# 旧版 JSON 存储（已被 SQLite 取代）
+logs.json
+
+# 系统文件
+.DS_Store
+Thumbs.db
