@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: study-log-api
+    runtime: python
+    plan: free
+    buildCommand: pip install uv && uv pip install --system -e .
+    startCommand: uvicorn study_log.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: STUDY_LOG_DB
+        value: /opt/render/project/src/logs.db
+      - key: PYTHON_VERSION
+        value: "3.11.15"

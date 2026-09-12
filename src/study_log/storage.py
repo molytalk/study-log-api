@@ -1,11 +1,15 @@
 """数据层 - 学习日志的持久化存储（SQLite 版）"""
+import os
 import sqlite3
 from pathlib import Path
 
 from .models import StudyLog
 
-# 数据库文件路径，默认在项目根目录下的 logs.db，resolve() 确保路径是绝对的
-DB_FILE = Path(__file__).resolve().parent.parent.parent / "logs.db"
+# 数据库文件路径：优先读环境变量 STUDY_LOG_DB（云平台部署时指定持久磁盘路径），
+# 没有则回退到项目根目录的 logs.db（本地开发默认值）。
+# resolve() 确保路径是绝对的。
+_DEFAULT_DB = Path(__file__).resolve().parent.parent.parent / "logs.db"
+DB_FILE = Path(os.getenv("STUDY_LOG_DB", str(_DEFAULT_DB)))
 
 def _get_conn():
     """获取数据库连接（row_factory 让结果能按字段名取值）"""
